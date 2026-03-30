@@ -335,6 +335,7 @@ button {
   display: flex;
   align-items: center;
   gap: 4px;
+  border-radius: 19px;
 }
 
 .nav-link {
