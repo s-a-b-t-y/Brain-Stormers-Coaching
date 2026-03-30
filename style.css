@@ -1256,7 +1256,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   align-items: center;
   gap: 8px;
 }
-.map-inner i { font-size: 3rem; color: var(--navy); opacity: 0.4; }
+.map-inner i { font-size: 3rem; color: var(--navy); opacity: 0.8; }
 .map-inner span {
   font-family: var(--font-head);
   font-size: 1rem;
