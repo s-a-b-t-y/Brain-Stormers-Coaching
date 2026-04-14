@@ -30,16 +30,28 @@ document.addEventListener("DOMContentLoaded", () => {
   aosElements.forEach((el) => aosObserver.observe(el));
   
   // Poster Carousel Logic
-  const cards = document.querySelectorAll('.poster-card');
+  const carouselWrap = document.querySelector('.poster-carousel-wrap');
+  const cardsContainer = document.getElementById('posterCards');
+  let cards = Array.from(document.querySelectorAll('.poster-card'));
   const indicators = document.querySelectorAll('.indicator');
   let currentIndex = 0;
   let carouselInterval;
   
-  function updateCarousel(index) {
-      cards.forEach((card, i) => {
-          card.classList.remove('active', 'prev', 'next');
-          indicators[i].classList.remove('active');
+  // If we only have 3 cards, clone them to prevent the ugly 'sweep' delay across the back 
+  if (cards.length === 3 && cardsContainer) {
+      cards.forEach(card => {
+          const clone = card.cloneNode(true);
+          cardsContainer.appendChild(clone);
       });
+      // Re-select all cards after cloning
+      cards = Array.from(document.querySelectorAll('.poster-card'));
+  }
+  
+  function updateCarousel(index) {
+      cards.forEach((card) => {
+          card.classList.remove('active', 'prev', 'next');
+      });
+      indicators.forEach(ind => ind.classList.remove('active'));
       
       const activeCard = cards[index];
       const prevCard = cards[(index - 1 + cards.length) % cards.length];
@@ -49,34 +61,37 @@ document.addEventListener("DOMContentLoaded", () => {
       prevCard.classList.add('prev');
       nextCard.classList.add('next');
       
-      indicators[index].classList.add('active');
+      const indIndex = index % indicators.length;
+      if (indicators[indIndex]) indicators[indIndex].classList.add('active');
       currentIndex = index;
   }
   
-  if(cards.length > 0) {
+  function startCarousel() {
+      // Always clear the existing interval before setting a new one
+      clearInterval(carouselInterval);
+      carouselInterval = setInterval(() => {
+          updateCarousel((currentIndex + 1) % cards.length);
+      }, 3000); // Reduced to 3 seconds for faster rotation
+  }
+  
+  if (cards.length > 0) {
       // Initialize
       updateCarousel(currentIndex);
-      
-      // Auto-advance
-      const startCarousel = () => {
-          carouselInterval = setInterval(() => {
-              updateCarousel((currentIndex + 1) % cards.length);
-          }, 4500); // 4.5 seconds
-      };
-      
       startCarousel();
       
       // Pause on hover
-      const carouselWrap = document.querySelector('.poster-carousel-wrap');
-      carouselWrap.addEventListener('mouseenter', () => clearInterval(carouselInterval));
-      carouselWrap.addEventListener('mouseleave', startCarousel);
+      if (carouselWrap) {
+          carouselWrap.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+          carouselWrap.addEventListener('mouseleave', startCarousel);
+      }
       
       // Click indicators to navigate
       indicators.forEach((indicator, i) => {
           indicator.addEventListener('click', () => {
+              // Find the closest index in the cloned array that represents this indicator
+              // Or simply just jump to the first matching index since they loop anyway
               updateCarousel(i);
-              clearInterval(carouselInterval);
-              startCarousel();
+              startCarousel(); // Reset timer
           });
       });
   }
@@ -86,17 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalImg = document.getElementById('posterModalImg');
   const modalClose = document.getElementById('posterModalClose');
   
+  // Re-attach card click listeners properly after potentially cloning
   cards.forEach(card => {
       card.addEventListener('click', (e) => {
-          // If the image clicked is NOT the active one, make it active
-          // Otherwise, open the modal
           if (!card.classList.contains('active')) {
-            const index = Array.from(cards).indexOf(card);
+            const index = cards.indexOf(card);
             updateCarousel(index);
+            startCarousel(); // Reset timer
           } else {
             const imgSrc = card.getAttribute('data-img');
-            modalImg.src = imgSrc;
-            modalOverlay.classList.add('active');
+            if (modalImg) modalImg.src = imgSrc;
+            if (modalOverlay) modalOverlay.classList.add('active');
           }
       });
   });
