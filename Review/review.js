@@ -81,7 +81,7 @@ async function loadReviews() {
   reviewsContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading reviews...</div>';
 
   try {
-    const q = query(collection(db, "Student-Review"), orderBy("createdAt", "desc"));
+    const q = query(collection(db, "Student-Review"), orderBy("rating", "desc"));
     const querySnapshot = await getDocs(q);
     
     reviewsContainer.innerHTML = ""; // Clear loader
@@ -94,11 +94,24 @@ async function loadReviews() {
 
     let totalRating = 0;
     let count = 0;
+    let allReviews = [];
 
-    querySnapshot.forEach((doc, index) => {
+    querySnapshot.forEach((doc) => {
       const data = doc.data();
       totalRating += data.rating || 0;
       count++;
+      allReviews.push(data);
+    });
+
+    // Optional: within the same rating, sort by date desc
+    allReviews.sort((a, b) => {
+      if (b.rating !== a.rating) return b.rating - a.rating;
+      const dateA = a.createdAt ? a.createdAt.toMillis() : 0;
+      const dateB = b.createdAt ? b.createdAt.toMillis() : 0;
+      return dateB - dateA;
+    });
+
+    allReviews.forEach((data, index) => {
       const card = createReviewCard(data, index);
       reviewsContainer.appendChild(card);
     });

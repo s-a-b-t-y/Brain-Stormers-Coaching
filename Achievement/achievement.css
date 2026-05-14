@@ -519,14 +519,6 @@ img { max-width: 100%; display: block; }
   transform: scale(1.1);
 }
 
-/* ===== FOOTER ===== */
-.footer {
-  padding: 40px 0;
-  background: var(--navy);
-  color: rgba(248, 246, 240, 0.6);
-  text-align: center;
-  font-size: 0.9rem;
-}
 
 /* ===== ANIMATIONS ===== */
 [data-aos] {

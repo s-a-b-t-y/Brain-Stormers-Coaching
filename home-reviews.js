@@ -13,10 +13,11 @@ async function loadHomeReviews() {
   if (!homeReviewsContainer) return;
 
   try {
+    // Fetch a larger set to allow for meaningful shuffling
     const q = query(
       collection(db, "Student-Review"), 
-      orderBy("createdAt", "desc"), 
-      limit(5)
+      orderBy("rating", "desc"),
+      limit(20)
     );
     const querySnapshot = await getDocs(q);
     
@@ -27,8 +28,27 @@ async function loadHomeReviews() {
       return;
     }
 
+    let allReviews = [];
     querySnapshot.forEach((doc) => {
       const data = doc.data();
+      // Filter for 4 and 5 star reviews
+      if (data.rating >= 4) {
+        allReviews.push(data);
+      }
+    });
+
+    // Shuffle reviews
+    const shuffled = allReviews.sort(() => 0.5 - Math.random());
+    
+    // Display top 5 (or fewer if not enough)
+    const toDisplay = shuffled.slice(0, 5);
+
+    if (toDisplay.length === 0) {
+      homeReviewsContainer.innerHTML = '<div class="loading-spinner">No high-rated reviews yet.</div>';
+      return;
+    }
+
+    toDisplay.forEach((data) => {
       const card = createReviewCard(data);
       homeReviewsContainer.appendChild(card);
     });
@@ -37,6 +57,7 @@ async function loadHomeReviews() {
     homeReviewsContainer.innerHTML = '<div class="loading-spinner">Error loading reviews.</div>';
   }
 }
+
 
 function createReviewCard(data) {
   const card = document.createElement("div");
