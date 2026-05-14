@@ -25,10 +25,34 @@
     radial-gradient(circle at 20% 80%, rgba(45, 74, 138, 0.2), transparent 60%);
 }
 
-.review-hero .hero-content {
+.review-hero .container.hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: auto;
+  padding-top: 0;
+}
+
+.hero-title {
+  font-size: clamp(4rem, 8vw, 6rem);
+  color: var(--white);
+  margin-bottom: 0;
+  flex: 1;
+  text-align: left;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(248, 246, 240, 0.8);
+  max-width: 400px;
+  text-align: right;
+  line-height: 1.6;
 }
 
 /* Review Grid Layout */
@@ -351,6 +375,22 @@ input:focus, textarea:focus {
   .review-hero {
     height: 35vh;
     min-height: 300px;
+  }
+  
+  .review-hero .container.hero-content {
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .hero-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    white-space: normal;
+  }
+  
+  .hero-sub {
+    text-align: center;
   }
 }
 

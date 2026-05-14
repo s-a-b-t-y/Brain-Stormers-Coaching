@@ -314,27 +314,49 @@ img {
   overflow: hidden;
 }
 
-.hero-overlay {
+.about-hero .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(13, 27, 62, 0.95) 0%, rgba(26, 43, 82, 0.8) 100%);
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a2b52 100%);
+  background-image: url('../Library/coaching-album/Classroom.png');
+  background-size: cover;
+  background-position: center;
 }
 
-.hero-content {
+.about-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13, 27, 62, 0.85) 0%, rgba(26, 43, 82, 0.95) 100%);
+}
+
+.about-hero .container.hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: auto;
+  padding-top: 0;
+  width: 100%;
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(4rem, 8vw, 6rem);
   color: var(--white);
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  flex: 1;
+  text-align: left;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .hero-sub {
-  font-size: 1.2rem;
-  color: rgba(248, 246, 240, 0.7);
+  font-size: 1.05rem;
+  color: rgba(248, 246, 240, 0.8);
+  max-width: 400px;
+  text-align: right;
+  line-height: 1.6;
 }
 
 /* ===== ABOUT INFO ===== */
@@ -655,6 +677,19 @@ img {
   
   .hero-title {
     font-size: 3rem;
+    text-align: center;
+    margin-bottom: 15px;
+    white-space: normal;
+  }
+  
+  .hero-sub {
+    text-align: center;
+  }
+  
+  .about-hero .container.hero-content {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
   
   .modal-header {

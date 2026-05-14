@@ -215,6 +215,19 @@ img {
   transform: translateY(-2px);
 }
 
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
 /* ===== AOS ANIMATIONS ===== */
 [data-aos] {
   opacity: 0;
@@ -1826,6 +1839,18 @@ img {
 .cd-text p {
   font-size: 0.93rem;
   color: var(--text-light);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.contact-actions .btn {
+  min-width: 160px;
+  justify-content: center;
 }
 
 /* ===== FOOTER ===== */
