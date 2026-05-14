@@ -71,6 +71,7 @@
             >
           </li>
           <li><a href="Program/program.html" class="nav-link">Programs</a></li>
+          <li><a href="Review/review.html" class="nav-link">Review</a></li>
           <li><a href="Contact/contact.html" class="nav-link">Contact</a></li>
           <li><a href="#" class="nav-enroll">Enroll Now</a></li>
         </ul>
@@ -650,79 +651,6 @@
       </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="testimonials section-pad">
-      <div class="container">
-        <div class="section-header" data-aos>
-          <span class="section-tag">Student Reviews</span>
-          <h2 class="section-title">
-            What Our <span class="accent">Students Say</span>
-          </h2>
-        </div>
-        <div class="testi-grid">
-          <div class="testi-card" data-aos data-delay="0">
-            <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
-            <p>
-              Brain Stormers changed my academic life. The structured classes
-              and weekly tests kept me consistently on track. I scored A+ in
-              SSC!
-            </p>
-            <div class="testi-footer">
-              <div class="testi-av">R</div>
-              <div class="testi-info">
-                <h4>Raihan Ahmed</h4>
-                <span>SSC Batch 2024</span>
-              </div>
-              <div class="testi-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i
-                ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                ><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="testi-card testi-featured" data-aos data-delay="150">
-            <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
-            <p>
-              The personal mentoring here is unmatched. My teacher helped me
-              understand concepts I struggled with for years. Got into my dream
-              university!
-            </p>
-            <div class="testi-footer">
-              <div class="testi-av">T</div>
-              <div class="testi-info">
-                <h4>Tasneem Akter</h4>
-                <span>University Admission 2024</span>
-              </div>
-              <div class="testi-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i
-                ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                ><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <div class="testi-card" data-aos data-delay="300">
-            <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
-            <p>
-              The quality of study materials and faculty dedication is
-              extraordinary. HSC preparation was seamless, thorough, and truly
-              effective.
-            </p>
-            <div class="testi-footer">
-              <div class="testi-av">S</div>
-              <div class="testi-info">
-                <h4>Sadman Islam</h4>
-                <span>HSC Batch 2024</span>
-              </div>
-              <div class="testi-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i
-                ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                ><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ===== CTA ===== -->
     <section class="cta-section">
@@ -748,6 +676,28 @@
           <a href="tel:+8801602942795" class="btn btn-outline-wt">
             <i class="fas fa-phone"></i>
             <span>Call Now</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STUDENT REVIEWS (DYNAMIC) ===== -->
+    <section class="dynamic-reviews section-pad" id="reviews">
+      <div class="container">
+        <div class="section-header" data-aos>
+          <span class="section-tag">Student Feedback</span>
+          <h2 class="section-title">Latest <span class="accent">Reviews</span></h2>
+          <p class="section-desc">Real stories from our students about their learning journey.</p>
+        </div>
+        <div class="home-reviews-container" id="homeReviewsContainer">
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i> Loading reviews...
+          </div>
+        </div>
+        <div class="view-all-reviews" data-aos>
+          <a href="Review/review.html" class="btn btn-primary">
+            <span>View All Reviews</span>
+            <i class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
@@ -892,6 +842,11 @@
                 >
               </li>
               <li>
+                <a href="Review/review.html"
+                  ><i class="fas fa-chevron-right"></i> Review</a
+                >
+              </li>
+              <li>
                 <a href="Contact/contact.html"
                   ><i class="fas fa-chevron-right"></i> Contact</a
                 >
@@ -958,6 +913,7 @@
       </div>
     </div>
 
+    <script type="module" src="home-reviews.js"></script>
     <script src="script.js"></script>
     <script src="modal.js"></script>
   </body>

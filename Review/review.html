@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews | Brain Stormers Academic & Admission Care</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="review.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Awesome Font CDNJS link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Favicon link -->
+    <link
+      rel="shortcut icon"
+      href="../Library/Favicon/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- Modal CSS -->
+    <link rel="stylesheet" href="../modal.css" />
+  </head>
+
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <div class="logo-icon">
+            <svg
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="22"
+                cy="22"
+                r="21"
+                stroke="#E8820C"
+                stroke-width="2"
+              />
+              <g transform="translate(9,8) scale(0.05)">
+                <path
+                  d="M120 56c0-30.9 25.1-56 56-56l24 0c17.7 0 32 14.3 32 32l0 448c0 17.7-14.3 32-32 32l-32 0c-29.8 0-54.9-20.4-62-48-.7 0-1.3 0-2 0-44.2 0-80-35.8-80-80 0-18 6-34.6 16-48-19.4-14.6-32-37.8-32-64 0-30.9 17.6-57.8 43.2-71.1-7.1-12-11.2-26-11.2-40.9 0-44.2 35.8-80 80-80l0-24zm272 0l0 24c44.2 0 80 35.8 80 80 0 15-4.1 29-11.2 40.9 25.7 13.3 43.2 40.1 43.2 71.1 0 26.2-12.6 49.4-32 64 10 13.4 16 30 16 48 0 44.2-35.8 80-80 80-.7 0-1.3 0-2 0-7.1 27.6-32.2 48-62 48l-32 0c-17.7 0-32-14.3-32-32l0-448c0-17.7 14.3-32 32-32l24 0c30.9 0 56 25.1 56 56z"
+                  fill="#E8820C"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">Brain Stormers</span>
+            <span class="logo-sub">Academic &amp; Admission Care</span>
+          </div>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../About/about.html" class="nav-link">About</a></li>
+          <li>
+            <a href="../Achievement/achievement.html" class="nav-link"
+              >Achievements</a
+            >
+          </li>
+          <li><a href="../Program/program.html" class="nav-link">Programs</a></li>
+          <li><a href="review.html" class="nav-link active">Review</a></li>
+          <li><a href="../Contact/contact.html" class="nav-link">Contact</a></li>
+          <li><a href="#" class="nav-enroll">Enroll Now</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===== REVIEW HERO ===== -->
+    <section class="review-hero">
+      <div class="hero-bg">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container hero-content">
+        <h1 class="hero-title">Student <span class="accent">Reviews</span></h1>
+        <p class="hero-sub">Your feedback helps us grow and serve you better.</p>
+      </div>
+    </section>
+
+    <!-- ===== WRITE A REVIEW ===== -->
+    <section class="write-review section-pad">
+      <div class="container">
+        <div class="review-grid">
+          <div class="review-form-container">
+            <div class="section-header">
+              <span class="section-tag">Feedback</span>
+              <h2 class="section-title">Write a <span class="accent">Review</span></h2>
+              <p class="section-desc">Share your experience with Brain Stormers.</p>
+            </div>
+            <form id="reviewForm" class="review-form">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Your Name" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" id="studentClass" placeholder="Class (e.g. SSC 2024)" required />
+                </div>
+                <div class="form-group">
+                  <input type="text" id="school" placeholder="School/College Name" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Your Rating</label>
+                <div class="star-rating" id="starRating">
+                  <i class="fas fa-star" data-rating="1"></i>
+                  <i class="fas fa-star" data-rating="2"></i>
+                  <i class="fas fa-star" data-rating="3"></i>
+                  <i class="fas fa-star" data-rating="4"></i>
+                  <i class="fas fa-star" data-rating="5"></i>
+                </div>
+                <input type="hidden" id="rating" value="5" />
+              </div>
+              <div class="form-group">
+                <textarea id="opinion" placeholder="Your Opinion" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <span>Submit Review</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+          <div class="review-stats">
+            <div class="stats-card">
+              <div class="stats-icon"><i class="fas fa-users"></i></div>
+              <h3>Join Our Community</h3>
+              <p>Over 100+ students have shared their journey with us. Be the next one!</p>
+              <div class="stats-line"></div>
+              <div class="rating-summary">
+                <div class="rs-big">4.9</div>
+                <div class="rs-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="rs-text">Average Rating</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ALL REVIEWS ===== -->
+    <section class="all-reviews section-pad" id="allReviews">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">What Our <span class="accent">Students Say</span></h2>
+        </div>
+        <div class="reviews-container" id="reviewsContainer">
+          <!-- Reviews will be loaded here -->
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i> Loading reviews...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-main">
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <a href="../index.html" class="nav-logo footer-logo">
+              <div class="logo-icon">
+                <svg
+                  viewBox="0 0 44 44"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="22"
+                    cy="22"
+                    r="21"
+                    stroke="#E8820C"
+                    stroke-width="2"
+                  />
+                  <g transform="translate(9,8) scale(0.05)">
+                    <path
+                      d="M120 56c0-30.9 25.1-56 56-56l24 0c17.7 0 32 14.3 32 32l0 448c0 17.7-14.3 32-32 32l-32 0c-29.8 0-54.9-20.4-62-48-.7 0-1.3 0-2 0-44.2 0-80-35.8-80-80 0-18 6-34.6 16-48-19.4-14.6-32-37.8-32-64 0-30.9 17.6-57.8 43.2-71.1-7.1-12-11.2-26-11.2-40.9 0-44.2 35.8-80 80-80l0-24zm272 0l0 24c44.2 0 80 35.8 80 80 0 15-4.1 29-11.2 40.9 25.7 13.3 43.2 40.1 43.2 71.1 0 26.2-12.6 49.4-32 64 10 13.4 16 30 16 48 0 44.2-35.8 80-80 80-.7 0-1.3 0-2 0-7.1 27.6-32.2 48-62 48l-32 0c-17.7 0-32-14.3-32-32l0-448c0-17.7 14.3-32 32-32l24 0c30.9 0 56 25.1 56 56z"
+                      fill="#E8820C"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <span class="logo-main">Brain Stormers</span>
+                <span class="logo-sub">Academic &amp; Admission Care</span>
+              </div>
+            </a>
+            <p class="footer-tagline">
+              Helping students build a stronger academic future — one milestone
+              at a time.
+            </p>
+            <div class="footer-socials">
+              <a
+                href="https://www.facebook.com/brainstormersbd"
+                target="_blank"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/channel/UC617Cusr6fyNm_f1_KgOw0A"
+                target="_blank"
+                aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li>
+                <a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a>
+              </li>
+              <li>
+                <a href="../About/about.html"><i class="fas fa-chevron-right"></i> About</a>
+              </li>
+              <li>
+                <a href="../Achievement/achievement.html"
+                  ><i class="fas fa-chevron-right"></i> Achievements</a
+                >
+              </li>
+              <li>
+                <a href="../Program/program.html"
+                  ><i class="fas fa-chevron-right"></i> Programs</a
+                >
+              </li>
+              <li>
+                <a href="review.html"
+                  ><i class="fas fa-chevron-right"></i> Review</a
+                >
+              </li>
+              <li>
+                <a href="../Contact/contact.html"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="fci">
+              <i class="fas fa-phone-alt"></i
+              ><span>+880 1602-942795, +880 1618-184015</span>
+            </div>
+            <div class="fci">
+              <i class="fas fa-envelope"></i
+              ><span>brainstormers.hr@gmail.com</span>
+            </div>
+            <div class="fci">
+              <i class="fas fa-map-marker-alt"></i
+              ><span>House-7, Road-13, Sector-06, Uttara, Dhaka-1230</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            Copyright &copy; 2026 Brain Stormers Academic &amp; Admission Care.
+            All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Back to Top -->
+    <button class="btt-btn" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== ENROLL MODAL ===== -->
+    <div class="enroll-modal-overlay" id="enrollModal">
+      <div class="enroll-modal">
+        <button class="em-close" id="emClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+        <div class="em-content">
+          <div class="em-section">
+            <h3 class="em-heading">Ask your question on our Whatsapp</h3>
+            <p class="em-desc">Click the WhatsApp icon below to chat with us directly and get all your questions answered instantly.</p>
+            <a href="https://wa.me/8801602942795" target="_blank" class="em-social-btn whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+          <div class="em-divider"></div>
+          <div class="em-section">
+            <h3 class="em-heading">Visit our more platform</h3>
+            <div class="em-socials">
+              <a href="https://www.youtube.com/channel/UC617Cusr6fyNm_f1_KgOw0A" target="_blank" class="em-social-btn youtube">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://www.facebook.com/brainstormersbd" target="_blank" class="em-social-btn facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="review.js"></script>
+    <script src="../script.js"></script>
+    <script src="../modal.js"></script>
+  </body>
+</html>
