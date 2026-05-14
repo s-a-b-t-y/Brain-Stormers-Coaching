@@ -12,6 +12,9 @@ const reviewForm = document.getElementById("reviewForm");
 const reviewsContainer = document.getElementById("reviewsContainer");
 const starRating = document.getElementById("starRating");
 const ratingInput = document.getElementById("rating");
+const avgRatingValue = document.getElementById("avgRatingValue");
+const avgRatingStars = document.getElementById("avgRatingStars");
+const totalReviewsText = document.getElementById("totalReviewsText");
 
 // --- STAR RATING LOGIC ---
 const stars = starRating.querySelectorAll("i");
@@ -85,17 +88,53 @@ async function loadReviews() {
 
     if (querySnapshot.empty) {
       reviewsContainer.innerHTML = '<div class="loading-spinner">No reviews yet. Be the first to write one!</div>';
+      updateAverageRatingDisplay("0.0", 0);
       return;
     }
 
+    let totalRating = 0;
+    let count = 0;
+
     querySnapshot.forEach((doc, index) => {
       const data = doc.data();
+      totalRating += data.rating || 0;
+      count++;
       const card = createReviewCard(data, index);
       reviewsContainer.appendChild(card);
     });
+
+    const average = count > 0 ? (totalRating / count).toFixed(1) : "0.0";
+    updateAverageRatingDisplay(average, count);
   } catch (error) {
     console.error("Error getting reviews: ", error);
     reviewsContainer.innerHTML = '<div class="loading-spinner">Error loading reviews. Please refresh.</div>';
+  }
+}
+
+function updateAverageRatingDisplay(average, total) {
+  if (avgRatingValue) avgRatingValue.textContent = average;
+  
+  if (totalReviewsText) {
+    totalReviewsText.textContent = total > 0 
+      ? `Over ${total}+ students have shared their journey with us. Be the next one!`
+      : "Be the first student to share your journey with us!";
+  }
+
+  if (avgRatingStars) {
+    let starsHtml = "";
+    const fullStars = Math.floor(average);
+    const hasHalfStar = average % 1 >= 0.5;
+    
+    for (let i = 1; i <= 5; i++) {
+      if (i <= fullStars) {
+        starsHtml += '<i class="fas fa-star"></i>';
+      } else if (i === fullStars + 1 && hasHalfStar) {
+        starsHtml += '<i class="fas fa-star-half-stroke"></i>';
+      } else {
+        starsHtml += '<i class="far fa-star"></i>';
+      }
+    }
+    avgRatingStars.innerHTML = starsHtml;
   }
 }
 
