@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* ─── NAVBAR SCROLL ─── */
   const navbar = document.getElementById("navbar");
-  
+
   function updateNavbar() {
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");
@@ -38,16 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ─── INFINITE LOOP CLONING ─── */
-  const grid = document.querySelector('.ach-grid');
-  if (grid) {
-    const cards = Array.from(grid.children);
-    // Clone all cards and append to grid to create a seamless loop
-    cards.forEach(card => {
-      const clone = card.cloneNode(true);
-      grid.appendChild(clone);
-    });
-  }
+
 
   /* ─── GALLERY MODAL LOGIC ─── */
   const viewMoreBtn = document.getElementById('viewMoreBtn');
@@ -105,6 +96,33 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.style.overflow = "";
     }
   }, { passive: true });
+
+  /* ─── SHUFFLE ACHIEVEMENTS ─── */
+  const achievementImages = [
+    "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",
+    "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg",
+    "21.jpg", "22.jpg", "23.jpg", "24.jpg", "25.jpg", "26.jpg", "27.jpg", "28.jpg", "29.jpg", "30.jpg",
+    "medical.jpg"
+  ];
+
+  function shuffleAchievements() {
+    const grid = document.querySelector('.ach-grid');
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll('.ach-card img');
+    if (cards.length === 0) return;
+
+    const shuffled = [...achievementImages].sort(() => 0.5 - Math.random());
+    
+    cards.forEach((img, index) => {
+      if (shuffled[index]) {
+        img.src = `../Library/achievement-album/${shuffled[index]}`;
+        img.alt = `Achievement ${shuffled[index].replace('.jpg', '')}`;
+      }
+    });
+  }
+
+  shuffleAchievements();
 
   console.log("%c🧠 Brain Stormers | Achievement Page Active", "color: #E8820C; font-weight: bold; font-size: 14px;");
 });

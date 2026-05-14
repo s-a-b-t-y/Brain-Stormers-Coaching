@@ -413,51 +413,24 @@ img { max-width: 100%; display: block; }
   100% { transform: translateY(250%); }
 }
 
-/* ===== GALLERY SECTION (Premium Horizontal Scroll) ===== */
+/* ===== GALLERY SECTION (Static Grid) ===== */
 .ach-scroll-container {
-  overflow: hidden; /* Changed from auto to hidden for auto-loop */
   padding: 40px 0;
   position: relative;
   width: 100%;
 }
 
-.ach-scroll-container::before,
-.ach-scroll-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.ach-scroll-container::before {
-  left: 0;
-  background: linear-gradient(to right, var(--white), transparent);
-}
-
-.ach-scroll-container::after {
-  right: 0;
-  background: linear-gradient(to left, var(--white), transparent);
-}
-
 .ach-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  width: max-content;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 20px 0;
-  animation: marquee 40s linear infinite;
 }
 
-.ach-scroll-container:hover .ach-grid {
-  animation-play-state: paused;
-}
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Halfway because of duplicated items */
-}
 
 .ach-card {
   width: 320px;
@@ -697,14 +670,21 @@ img { max-width: 100%; display: block; }
 
 /* ===== RESPONSIVENESS ===== */
 @media (max-width: 1200px) {
-  .ach-card { width: 280px; }
+  .ach-grid {
+    gap: 20px;
+    padding: 0 15px;
+  }
+  .ach-card { width: 100%; }
 }
 
 @media (max-width: 768px) {
   .nav-menu { display: none; }
   .hamburger { display: flex; }
   
-  .ach-card { width: 240px; }
+  .ach-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
   
   .full-gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -731,13 +711,11 @@ img { max-width: 100%; display: block; }
   }
 }
 
-@media (max-width: 768px) {
-  .hero-stats-mini {
-    gap: 20px;
-    padding: 15px 25px;
+@media (max-width: 580px) {
+  .ach-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
   }
-  .h-stat strong { font-size: 1.5rem; }
-  .h-stat span { font-size: 0.65rem; }
 }
 
 @media (max-width: 480px) {
