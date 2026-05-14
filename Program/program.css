@@ -711,6 +711,51 @@ img {
   border-radius: 100px;
 }
 
+/* Carousel Navigation Buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  color: var(--navy);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.carousel-nav-btn:hover {
+  background: var(--amber);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-nav-btn.prev-btn {
+  left: -25px;
+}
+
+.carousel-nav-btn.next-btn {
+  right: -25px;
+}
+
+@media (max-width: 1024px) {
+  .carousel-nav-btn.prev-btn {
+    left: 10px;
+  }
+  .carousel-nav-btn.next-btn {
+    right: 10px;
+  }
+}
+
 /* ===== FULL SCREEN POSTER MODAL ===== */
 .poster-modal-overlay {
   position: fixed;

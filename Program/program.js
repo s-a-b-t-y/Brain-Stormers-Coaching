@@ -94,6 +94,24 @@ document.addEventListener("DOMContentLoaded", () => {
               startCarousel(); // Reset timer
           });
       });
+
+      // Navigation Buttons
+      const prevBtn = document.getElementById('posterPrevBtn');
+      const nextBtn = document.getElementById('posterNextBtn');
+      
+      if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+              updateCarousel((currentIndex - 1 + cards.length) % cards.length);
+              startCarousel();
+          });
+      }
+      
+      if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+              updateCarousel((currentIndex + 1) % cards.length);
+              startCarousel();
+          });
+      }
   }
   
   // Modal Logic
