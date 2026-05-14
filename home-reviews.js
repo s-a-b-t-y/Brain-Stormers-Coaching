@@ -40,8 +40,8 @@ async function loadHomeReviews() {
     // Shuffle reviews
     const shuffled = allReviews.sort(() => 0.5 - Math.random());
     
-    // Display top 5 (or fewer if not enough)
-    const toDisplay = shuffled.slice(0, 5);
+    // Display top 6 (or fewer if not enough)
+    const toDisplay = shuffled.slice(0, 6);
 
     if (toDisplay.length === 0) {
       homeReviewsContainer.innerHTML = '<div class="loading-spinner">No high-rated reviews yet.</div>';
