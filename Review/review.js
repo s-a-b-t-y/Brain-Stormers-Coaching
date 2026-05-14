@@ -16,6 +16,34 @@ const avgRatingValue = document.getElementById("avgRatingValue");
 const avgRatingStars = document.getElementById("avgRatingStars");
 const totalReviewsText = document.getElementById("totalReviewsText");
 
+// --- SUCCESS MODAL LOGIC ---
+const successModal = document.getElementById("successModal");
+const smClose = document.getElementById("smClose");
+const smOkBtn = document.getElementById("smOkBtn");
+
+function showSuccessModal() {
+  if (successModal) {
+    successModal.classList.add("active");
+  }
+}
+
+function hideSuccessModal() {
+  if (successModal) {
+    successModal.classList.remove("active");
+  }
+}
+
+if (smClose) smClose.addEventListener("click", hideSuccessModal);
+if (smOkBtn) smOkBtn.addEventListener("click", hideSuccessModal);
+// Close modal when clicking outside
+if (successModal) {
+  successModal.addEventListener("click", (e) => {
+    if (e.target === successModal) {
+      hideSuccessModal();
+    }
+  });
+}
+
 // --- STAR RATING LOGIC ---
 const stars = starRating.querySelectorAll("i");
 stars.forEach(star => {
@@ -63,7 +91,7 @@ reviewForm.addEventListener("submit", async (e) => {
       createdAt: serverTimestamp()
     });
 
-    alert("Thank you for your review!");
+    showSuccessModal();
     reviewForm.reset();
     updateStars(5);
     loadReviews(); // Reload reviews after submission
