@@ -38,45 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ─── MODAL LOGIC ─── */
-  const modalOverlay = document.getElementById("modalOverlay");
-  const moreInfoBtn = document.getElementById("moreInfoBtn");
-  const modalClose = document.getElementById("modalClose");
-
-  function openModal() {
-    modalOverlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeModal() {
-    modalOverlay.classList.remove("active");
-    document.body.style.overflow = "";
-  }
-
-  if (moreInfoBtn) {
-    moreInfoBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openModal();
-    });
-  }
-
-  if (modalClose) {
-    modalClose.addEventListener("click", closeModal);
-  }
-
-  // Close modal on outside click
-  modalOverlay.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) {
-      closeModal();
-    }
-  });
-
-  // Close on ESC key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
-      closeModal();
-    }
-  });
+  /* Modal Logic removed as bio is now inline */
 
   /* ─── CUSTOM AOS (Animate On Scroll) ─── */
   function revealOnScroll() {
