@@ -290,6 +290,13 @@ img, video { max-width: 100%; display: block; }
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .contact-hero {
+    height: 35vh;
+    min-height: 300px;
+  }
+}
+
 .contact-hero .hero-bg {
   position: absolute;
   inset: 0;
@@ -316,7 +323,7 @@ img, video { max-width: 100%; display: block; }
   width: 100%;
 }
 .hero-title { 
-  font-size: clamp(4rem, 8vw, 6rem); 
+  font-size: clamp(3rem, 7vw, 5.5rem); 
   color: var(--white); 
   margin-bottom: 0; 
   flex: 1;
@@ -335,23 +342,42 @@ img, video { max-width: 100%; display: block; }
 /* ===== CONTACT SECTION ===== */
 .contact-wrap {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 50px;
   align-items: center;
 }
 
 .contact-map-box {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-width: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
   position: relative;
 }
 
+.contact-map-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .contact-map-box {
+    aspect-ratio: 16/9;
+    height: 300px;
+  }
+}
+
 .contact-details {
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
 }
 
 .cd-item {
@@ -419,9 +445,10 @@ img, video { max-width: 100%; display: block; }
 }
 
 /* ===== RESPONSIVENESS ===== */
-@media (max-width: 991px) {
+@media (max-width: 1100px) {
   .contact-wrap {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
   
   .footer-grid {
@@ -456,10 +483,33 @@ img, video { max-width: 100%; display: block; }
 }
 
 @media (max-width: 480px) {
-  .hero-title { font-size: 2.8rem; text-align: center; margin-bottom: 10px; white-space: normal; }
-  .hero-sub { text-align: center; }
+  .section-pad {
+    padding: 60px 0;
+  }
+  .hero-title { 
+    font-size: 2.5rem; 
+    text-align: center; 
+    margin-bottom: 12px; 
+    white-space: normal; 
+  }
+  .hero-sub { 
+    text-align: center; 
+    font-size: 0.95rem;
+  }
   .contact-actions {
     max-width: 100%;
+    width: 100%;
+  }
+  .contact-actions .btn {
+    width: 100%;
+  }
+  .cd-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  .cd-text h4 {
+    font-size: 1.15rem;
   }
 }
 
@@ -467,6 +517,7 @@ img, video { max-width: 100%; display: block; }
   .contact-hero .container.hero-content {
     flex-direction: column;
     justify-content: center;
+    padding-top: 80px; /* Space for navbar */
   }
   .hero-title { text-align: center; margin-bottom: 15px; white-space: normal; }
   .hero-sub { text-align: center; }

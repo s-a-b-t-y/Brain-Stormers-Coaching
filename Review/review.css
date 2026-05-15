@@ -11,6 +11,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .review-hero {
+    height: 35vh;
+    min-height: 300px;
+  }
+}
+
 .review-hero .hero-bg {
   position: absolute;
   inset: 0;
@@ -38,7 +45,7 @@
 }
 
 .hero-title {
-  font-size: clamp(4rem, 8vw, 6rem);
+  font-size: clamp(3rem, 7vw, 5.5rem);
   color: var(--white);
   margin-bottom: 0;
   flex: 1;
@@ -235,8 +242,8 @@ input:focus, textarea:focus {
 
 .reviews-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
   margin-top: 50px;
 }
 
@@ -380,6 +387,8 @@ input:focus, textarea:focus {
   .review-hero .container.hero-content {
     flex-direction: column;
     justify-content: center;
+    padding-top: 80px; /* Space for navbar */
+    gap: 15px;
   }
   
   .hero-title {
@@ -391,6 +400,7 @@ input:focus, textarea:focus {
   
   .hero-sub {
     text-align: center;
+    font-size: 0.95rem;
   }
 }
 
@@ -429,5 +439,17 @@ input:focus, textarea:focus {
   
   .rc-info h4 {
     font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .review-form-container {
+    padding: 24px 16px;
+  }
+
+  .stats-card {
+    padding: 35px 20px;
   }
 }
