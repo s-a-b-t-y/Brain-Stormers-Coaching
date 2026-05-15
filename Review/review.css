@@ -380,27 +380,60 @@ input:focus, textarea:focus {
   }
 
   .review-hero {
-    height: 35vh;
-    min-height: 300px;
+    height: auto;
+    min-height: 280px;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
   }
   
   .review-hero .container.hero-content {
     flex-direction: column;
     justify-content: center;
-    padding-top: 80px; /* Space for navbar */
+    padding-top: 0;
     gap: 15px;
   }
   
   .hero-title {
     text-align: center;
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 1.8rem !important;
+    margin-bottom: 10px;
     white-space: normal;
+    line-height: 1.2;
+    padding: 0 10px;
   }
   
   .hero-sub {
     text-align: center;
     font-size: 0.95rem;
+  }
+
+  /* Ensure Navbar components are visible on mobile */
+  .hamburger {
+    display: flex !important;
+  }
+
+  .nav-menu {
+    display: none; /* Hidden by default on mobile, shown when .open */
+  }
+
+  .nav-menu.open {
+    display: flex !important;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: rgba(13, 27, 62, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 10px;
+    z-index: 999;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -442,7 +475,7 @@ input:focus, textarea:focus {
   }
 
   .hero-title {
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
   }
   
   .review-form-container {

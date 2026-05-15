@@ -292,8 +292,12 @@ img, video { max-width: 100%; display: block; }
 
 @media (max-width: 768px) {
   .contact-hero {
-    height: 35vh;
+    height: auto;
     min-height: 300px;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -517,10 +521,36 @@ img, video { max-width: 100%; display: block; }
   .contact-hero .container.hero-content {
     flex-direction: column;
     justify-content: center;
-    padding-top: 80px; /* Space for navbar */
+    padding-top: 0;
   }
   .hero-title { text-align: center; margin-bottom: 15px; white-space: normal; }
   .hero-sub { text-align: center; }
+
+  /* Ensure Navbar components are visible on mobile */
+  .hamburger {
+    display: flex !important;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu.open {
+    display: flex !important;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: rgba(13, 27, 62, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 10px;
+    z-index: 999;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 @keyframes slideDown {
