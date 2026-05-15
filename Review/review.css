@@ -1,4 +1,9 @@
 /* ===== REVIEW PAGE OVERRIDES & COMPONENTS ===== */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
 
 /* Adjusting Hero for the Review Page */
 .review-hero {
@@ -72,6 +77,10 @@
   grid-template-columns: 1.4fr 1fr;
   gap: 50px;
   align-items: start;
+}
+
+.write-review {
+  overflow-x: hidden;
 }
 
 .review-form-container {
@@ -242,6 +251,7 @@ input:focus, textarea:focus {
 /* All Reviews Section */
 .all-reviews {
   background: var(--section-alt);
+  overflow-x: hidden;
 }
 
 .reviews-container {
