@@ -11,10 +11,15 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .review-hero {
-    height: 35vh;
-    min-height: 300px;
+    height: auto;
+    min-height: 280px;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
   }
 }
 
@@ -377,16 +382,6 @@ input:focus, textarea:focus {
     position: static;
     margin-top: 30px;
   }
-
-  .review-hero {
-    height: auto;
-    min-height: 280px;
-    padding-top: 120px;
-    padding-bottom: 60px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
   
   .review-hero .container.hero-content {
     flex-direction: column;
@@ -397,7 +392,7 @@ input:focus, textarea:focus {
   
   .hero-title {
     text-align: center;
-    font-size: 1.8rem !important;
+    font-size: clamp(2rem, 8vw, 2.8rem);
     margin-bottom: 10px;
     white-space: normal;
     line-height: 1.2;
@@ -407,9 +402,8 @@ input:focus, textarea:focus {
   .hero-sub {
     text-align: center;
     font-size: 0.95rem;
+    max-width: 100%;
   }
-
-
 }
 
 @media (max-width: 768px) {
@@ -424,9 +418,13 @@ input:focus, textarea:focus {
 
   .reviews-container {
     grid-template-columns: 1fr;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .review-card {
+    padding: 24px 20px;
   }
 
   .section-pad {
@@ -436,7 +434,7 @@ input:focus, textarea:focus {
 
 @media (max-width: 480px) {
   .rating-summary .rs-big {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   
   .rc-avatar {
@@ -450,7 +448,7 @@ input:focus, textarea:focus {
   }
 
   .hero-title {
-    font-size: 2rem !important;
+    font-size: 2.2rem;
   }
   
   .review-form-container {
@@ -458,6 +456,11 @@ input:focus, textarea:focus {
   }
 
   .stats-card {
-    padding: 35px 20px;
+    padding: 30px 16px;
+  }
+
+  .star-rating {
+    gap: 8px;
+    font-size: 1.5rem;
   }
 }
